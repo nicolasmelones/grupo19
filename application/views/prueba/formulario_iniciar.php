@@ -3,6 +3,7 @@
 <?php
 	$email = array(
 		'name' => 'email',
+		'value' => set_value('email'),
 		'placeholder' => 'E-mail'
 	);
 	
@@ -12,13 +13,18 @@
 	);
 	
 	?>
-	
+<center>
+<div class="d1">
+<h1><u>Iniciar Sesión</u></h1>
+<br>	
 	<?= form_label('E-mail: ','email') ?>
 	<?= form_input($email) ?>
 <br>
+<br>
 	<?= form_label('Clave: ','clave') ?>
 	<?= form_password($clave) ?>	
-	
+<br>
+<br>	
 	<?= form_submit('','Enviar') ?>
 <?= form_close() ?>
 	

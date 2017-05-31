@@ -1,0 +1,1 @@
+<center><div class="d4"><b><?php echo '¡ERROR!: El email ya fue utilizado';?></b></div></center>

@@ -1,35 +1,29 @@
-
 <body>
-
-	<h1>Titulo</h1>
-	
-	<tbody>
+<center><h1>Gauchadas</h1></center>
 <?php foreach($query as $row): ?>
-<tr> 
+<div class="d1"><tr> 
    
-	<td><a href="mostrarGauchada?id=<?php echo $row->id ?>"><?php echo $row->titulo; ?>  </a></td> 
-	<br>
-	<td><?php echo $row->texto; ?></td>
+	<center>
+	<td><h2><a href="mostrarGauchada?id=<?php echo $row->id ?>"><?php echo $row->titulo; ?>  </a></h2></td>
 	<br>
 	<?php 
 		if ($row->imagen==NULL){?>
-			<!--<img src="C:\xampp\htdocs\CodeIgniter\application\imagenes\icono.png">-->
-			<img src="<?php echo base_url('application/imagenes/icono.png');?>"/>
+			<img src="http://localhost/CodeIgniter/imagenes/icono.png">
 		<?php
 		}
 		else{?>
 	<td><img src= <?php //echo $row->imagen ?> ></td>
 		<?php } ?>
 	<br>
-	<td><?php echo $row->texto; ?></td>
+	<td><?php $texto = $row->texto;
+		echo $aMostrar=substr($texto, 0, 150);
+		echo'...'
+	?></td>
+	</center>
 	
-</tr>
-<br>
-<br>
-<br>
-<br>
+</tr></div>
 <?php endforeach; ?>
-</tbody>
+
 	
 
 
