@@ -21,6 +21,10 @@
 	<p><?php
 		echo $row->texto;
 	?></p><br>
+	<p>Fecha limite (aaaa/mm/dd): <?php
+		echo $row->fecha;
+	?></p><br>	
+		
 	<input type="submit" value="Responder" style= "font-weight: bold; width:120px; height:40px" ></input>
 	</center></div>
 	<?php

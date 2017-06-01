@@ -1,0 +1,1 @@
+<div class="d4"><center><b><u><h3><?php echo 'La fecha limite es incorrecta. La fecha limite debe ser posterior al día de hoy.';?></h3></u></b></center></div>

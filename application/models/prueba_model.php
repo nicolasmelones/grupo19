@@ -9,7 +9,7 @@ class Prueba_model extends CI_Model {
 	function crearUsuario($data){
 		$this->db->insert('usuario',array('nombre'=>$data['nombre'],'apellido'=>$data['apellido'],
 		'email'=>$data['email'],'clave'=>$data['clave'],'telefono'=>$data['telefono'],'edad'=>$data['edad'],
-		'idLocalidad'=>$data['idLocalidad']));
+		'idLocalidad'=>$data['idLocalidad'], 'creditos'=>$data['creditos']));
 	}
 }
 ?>

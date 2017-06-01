@@ -1,0 +1,1 @@
+<div class="d4"><center><b><u><h3><?php echo 'No tiene creditos para realizar el pedido';?></h3></u></b></center></div>

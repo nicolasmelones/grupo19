@@ -1,5 +1,5 @@
 <?php echo validation_errors(); ?>
-<?= form_open('/prueba/validarFormulario2') ?>
+<?= form_open('/prueba/validarFormulario2',array('name'=>'iniciar','onsubmit' => 'return valida_enviar1();')) ?>
 <?php
 	$email = array(
 		'name' => 'email',

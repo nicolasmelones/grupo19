@@ -2,7 +2,7 @@
 
 
 <?php echo validation_errors(); ?>
-<?= form_open('/prueba/validarFormulario3') ?>
+<?= form_open('/prueba/validarFormulario3',array('name'=>'credito','onsubmit' => 'return valida_enviar2();')) ?>
 <?php
 	$numero = array(
 		'name' => 'numero',

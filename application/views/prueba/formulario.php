@@ -1,5 +1,6 @@
-<?php echo validation_errors(); ?>
-<?= form_open('/prueba/validarFormulario') ?>
+<?php echo validation_errors(); 
+?>
+<?= form_open('/prueba/validarFormulario',array('name'=>'registro','onsubmit' => 'return valida_enviar();')) ?>
 <?php
 	$nombre = array(
 		'name' => 'nombre',
@@ -49,11 +50,7 @@
 <h1><u>Registrate como usuario</u></h1>
 
 	<?= form_label('Nombre: ','nombre') ?>
-	<?= form_input($nombre) ?>
-	
-	<h5>Username</h5>
-	<input type="text" name="username" value="<?php echo set_value('username'); ?>" size="50" />
-
+	<?= form_input($nombre, 'onClick="valida_enviar()"') ?>
 <br>
 <br>
 	<?= form_label('Apellido: ','apellido') ?>

@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>estilo/estilo.css">
 <meta charset='utf-8'>
 <link rel="icon" type="image/png" href="http://localhost/CodeIgniter/imagenes/icono.png" />
+<script type="text/javascript" src="<?= base_url() ?>js/javascript.js"></script>
 </head>
 
 	<ul class="barra">
@@ -18,6 +19,7 @@
 		
 		    else{ ?>
 				<li2><a href="logout" style="color:white">Cerrar Sesión</a></li2>
+				<li><a href="pedirG" style="color:white">Pedir Gauchada</a></li>
 				<li><a href="comprarC" style="color:white">Comprar Crédito</a></li>
 				<li2><a><?php
 					$usuario = $this->session->userdata('email');
