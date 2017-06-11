@@ -4,7 +4,7 @@
 	$titulo = array(
 		'name' => 'titulo',
 		'value' => set_value('titulo'),
-		'placeholder' => 'Escribi el titulo'
+		'placeholder' => 'Ingrese el titulo'
 	);
 	
 	$descripcion = array(
@@ -31,6 +31,7 @@
 <h1><u>Pedir Gauchada</u></h1>
 
 	<?= form_label('Titulo: ','titulo') ?>
+	<br>
 	<?= form_input($titulo) ?>
 <br>
 <br>
@@ -43,7 +44,7 @@
 	<input type="date" name="fecha" id="fecha" step="1" min="<?php echo date("d/m/Y"); ?>" max="01/01/2020">
 <br>
 <br>
-	<?= form_label('Imagen: ','imagen') ?>
+	<?= form_label('Imagen (opcional): ','imagen') ?>
 	<input type="file" name="imagen">
 <br>
 <br>	

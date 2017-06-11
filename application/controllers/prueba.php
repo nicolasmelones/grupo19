@@ -242,12 +242,17 @@ class Prueba extends CI_Controller {
 		'descripcion' => $this->input->post('descripcion'),
 		'fecha' => $this->input->post('fecha')
 		  );
-		if($_FILES['imagen']['size']!=0){  
-			$contenido=file_get_contents($_FILES['imagen']['tmp_name']);
+		if($_FILES['imagen']['size']!=0){ 
+			$imagen_temporal  = $_FILES['imagen']['tmp_name'];
+			//$contenido=file_get_contents($_FILES['imagen']['tmp_name']);
 			$tipo=$_FILES['imagen']['type'];
+			$tamaño=$_FILES['imagen']['size'];
 			$array_tipo=explode('/',$tipo);
+			$fp     = fopen($imagen_temporal, 'r+b');
+			$data2 = fread($fp, filesize($imagen_temporal));
+			fclose($fp);
 			
-			if($this->form_validation->run() ==	FALSE || ($data['fecha'] < date("Y-m-d")) || ($array_tipo[1]!='jpeg' && $array_tipo[1]!='jpg' && $array_tipo[1]!='png') ){
+			if($this->form_validation->run() ==	FALSE || ($data['fecha'] < date("Y-m-d")) || ($tamaño > 16777215) || ($array_tipo[1]!='jpeg' && $array_tipo[1]!='jpg' && $array_tipo[1]!='png') ){
 				$this->load->view('prueba/header');
 				if($data['fecha'] < date("Y-m-d") ){
 					$this->load->view('prueba/fecha_error');
@@ -255,10 +260,13 @@ class Prueba extends CI_Controller {
 				if($array_tipo[1]!='jpeg' && $array_tipo[1]!='jpg' && $array_tipo[1]!='png'){
 					$this->load->view('prueba/imagen_error');
 				}
+				if($tamaño > 16777215){
+					$this->load->view('prueba/imagen_error2');
+				}
 				$this->load->view('prueba/gauchada');
 			}
 			else{
-				$this->gauchada_model->pedir_gauchada($data,$mail,$contenido,$array_tipo);
+				$this->gauchada_model->pedir_gauchada($data,$mail,$data2,$array_tipo);
 				$this->gauchada_model->restar_credito($mail);
 				redirect('prueba/index?favorPedido');
 				}	
@@ -281,12 +289,6 @@ class Prueba extends CI_Controller {
 		}
 		
 
-	}
-
-	
-	function files(){
-		$this->load->mdoel('imagen','b');
-		$this->load->view('files');
 	}
 
 }

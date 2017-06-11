@@ -17,7 +17,7 @@ class Gauchada_model extends CI_Model {
 		$idLocalidad = ($resultado->idLocalidad);
 		
 		$this->db->insert('gauchada',array('titulo'=>$data['titulo'],'texto'=>$data['descripcion'],
-		'fecha'=>$data['fecha'],'imagen'=> mysql_escape_string($contenido), 'tipoImagen'=> $array_tipo[1], 'idUsuario'=>$id,'idLocalidad'=>$idLocalidad));
+		'fecha'=>$data['fecha'],'imagen'=>$contenido, 'tipoImagen'=> $array_tipo[1], 'idUsuario'=>$id,'idLocalidad'=>$idLocalidad));
 	}
 	
 	function pedir_gauchada2($data,$mail){

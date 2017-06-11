@@ -7,7 +7,9 @@ class Inicio_model extends CI_Model {
 		$this->load->database();
 	}
 	function listarGauchada(){
-		$query = $this->db->select('*')->from('gauchada')->get();
+		$this->db->select('*')->from('gauchada');
+		$this->db->order_by("id","desc");
+		$query = $this->db->get();
 		return $query->result();
 	}
 }

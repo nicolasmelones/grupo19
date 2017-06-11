@@ -1,0 +1,1 @@
+<div class="d4"><center><b><u><h3><?php echo 'La imagen excede los 16 MB';?></h3></u></b></center></div>
