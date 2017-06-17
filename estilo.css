@@ -1,0 +1,152 @@
+body {
+	background-image:url("http://localhost/CodeIgniter/imagenes/fondo1.jpg");
+	background-repeat:no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	font-family:"Arial";
+	}
+
+	
+/* margen para que la barra de menu quede pegada arriba */
+body 
+	{
+	margin:0;
+	}
+/*-----------------------------------------------------*/
+a.nounderline:link   
+{   
+ text-decoration:none;   
+}
+
+h4{
+	color: red;
+} 
+
+	
+div.contenedor {
+    float: left;
+	height:auto;
+	width:auto;
+	text-align:center;
+	}
+	
+	
+.imagen2{
+	margin:0;
+	width: auto;
+	height: 354px;
+	}
+
+.imagen{
+	width: 200px;
+	height: 100%;
+	}	
+	
+.barra {
+    list-style-type: none;
+	top: 0;
+	width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	opacity: 0.8;
+    background-color: #333;
+	
+}
+
+
+
+li {
+    float: left;
+}
+
+
+li2 {
+	display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+	float: right;
+}
+
+li3 {
+	top: 0;
+	margin: 0;
+	display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+
+/* div para poner un rectangulo gris traslucido para poner texto adentro*/
+div.d1 {
+    background-color: #d9b38c;
+    width: 60%	;
+    padding: 25px;
+    border: 25px;
+    margin: 25px 230px;
+	opacity: 0.90;
+	filter: alpha (opacity=60);
+	border-color: white;
+	border-radius: 25px;
+	}
+/*----------------------------------------------------------------------*/
+
+
+
+div.d2 {
+    background-color: lightgrey;
+    width: 80%	;
+    padding: 25px;
+    border: 25px;
+    margin: 25px;
+	opacity: 0.75;
+	filter: alpha (opacity=60);
+	border-color: white;
+	border-radius: 25px;
+	}
+	
+div.d3 {
+	background-color: #99ff66;
+    width: 60%	;
+    padding: 25px;
+    border: 25px;
+    margin: 25px 230px;
+	opacity: 0.90;
+	filter: alpha (opacity=60);
+	border-color: white;
+	border-radius: 25px;
+	}
+
+div.d4 {
+	background-color: #ff4d4d;
+    width: 60%	;
+    padding: 25px;
+    border: 25px;
+    margin: 25px 230px;
+	opacity: 0.90;
+	filter: alpha (opacity=60);
+	border-color: white;
+	border-radius: 25px;
+	}	
+
+
