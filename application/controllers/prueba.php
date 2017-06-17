@@ -17,6 +17,7 @@ class Prueba extends CI_Controller {
 	
 	function index(){
 	$this->load->view('prueba/header');
+	$this->load->view('prueba/busqueda');
 	if(isset($_GET['cargadocorrecto'])){
 		$this->load->view('prueba/compraExitosa');
 	}
@@ -26,8 +27,23 @@ class Prueba extends CI_Controller {
 	if(isset($_GET['favorPedido'])){
 		$this->load->view('prueba/gauchadaCorrecto');
 	}
+	if(isset($_GET['noInicio'])){
+		$this->load->view('prueba/noInicio');
+	}	
+	if(isset($_GET['ciudad'])){
+		$ciudad=$_GET['ciudad'];
+	}
+	else{$ciudad=0;}
+	
+	if(isset($_GET['titulo'])){
+		$titulo=$_GET['titulo'];
+	}
+	else{$titulo='';}
 	$this->load->model('inicio_model');
-    $data['query'] = $this->inicio_model->listarGauchada();   
+    $data['query'] = $this->inicio_model->listarGauchada($ciudad,$titulo);
+	if ($data['query'] == null){
+		$this->load->view('prueba/busquedaNula');
+	}
     $this->load->view('prueba/bienvenido',$data);
 	
 	}
@@ -290,7 +306,23 @@ class Prueba extends CI_Controller {
 		
 
 	}
-
+	
+	
+	function verPerfil(){
+		if(!$this->session->userdata('email')){
+			redirect('prueba/index?noInicio');
+		}		
+		$this->load->view('prueba/header');
+		$this->load->model('usuario_model');
+		if(isset($_GET['email'])){
+			$mail=$_GET['email'];
+		}	
+		$data70['query'] = $this->usuario_model->traerDatos($mail);
+		$this->load->view('/prueba/perfil', $data70);		
+		
+	
+		
+	}
 }
 
 ?>

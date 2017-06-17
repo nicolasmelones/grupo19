@@ -25,10 +25,25 @@
 	<p>Fecha limite (aaaa/mm/dd): <?php
 		echo $row->fecha;
 	?></p><br>	
-		
-	<input type="submit" value="Responder" style= "font-weight: bold; width:120px; height:40px" ></input>
+	
+	<?php 
+					$this->db->select('email');
+					$this->db->from('usuario');
+					$this->db->where('idUsuario', $row->idUsuario);
+					$consulta = $this->db->get();
+					$resultado = $consulta->row();
+					$emaail=($resultado->email);	
+	if($this->session->userdata('email')){		?>
+	
+	<p> Usuario : <a href="verPerfil?email=<?=$emaail?>"> <?php
+		echo $emaail
+	?></a></p><br>
+<?php	if($emaail!=$this->session->userdata('email')){	?>
+	<input type="submit" value="Ofrecerse" style= "font-weight: bold; width:120px; height:40px" ></input>
 	</center></div>
 	<?php
+	}
+	}
 	}
 	else{ ?>
 	<div class="d4"><center><h2>Gauchada expirada.</center></h2></div>

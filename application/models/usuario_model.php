@@ -21,5 +21,15 @@ class Usuario_model extends CI_Model {
 		$this->db->where('email', $data);
         $this->db->update('usuario', $data7);
 	}
+	
+	function traerDatos($email){
+		$this->db->select('*');
+		$this->db->from('usuario');
+		$this->db->join('localidades','localidades.idLocalidad = usuario.idLocalidad', 'inner');
+		$this->db->where('email', $email);
+		$consulta = $this->db->get();
+		$resultado = $consulta->row();
+		return $resultado;
+	}
 }
 ?>

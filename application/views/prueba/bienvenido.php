@@ -1,5 +1,5 @@
 <body link="00000">
-<center><h1>Gauchadas</h1></center>
+
 <?php foreach($query as $row): ?>
 	<?php if($row->fecha > date("Y-m-d")){ ?>
 <div class="d1"><tr> 
@@ -15,7 +15,7 @@
 	<td><img src="<?php echo 'data:' . $row->tipoImagen . ';base64,' . base64_encode($row->imagen); ?>" width="400"></td>
 		<?php } ?>
 	<br>
-	<br>FECHA DE PUBLLICACIÓN Y SACAR BOTON CUANDO NO ESTÁ LOGUEADO
+	<br>FECHA DE PUBLLICACIÓN Y LOCALIDAD
 	<td><?php $texto = $row->texto;
 		echo $aMostrar=substr($texto, 0, 150);
 		if((strlen($texto))>150){

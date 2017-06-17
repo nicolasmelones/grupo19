@@ -31,9 +31,9 @@
 					echo 'Créditos: ';
 					echo ($resultado->creditos);
 				?></a></li2>
-				<li2><a><?php echo $this->session->userdata('email'); ?></a></li2>
+				<li2><a href="verPerfil?email=<?= $this->session->userdata('email');?>" style="color: white"><?php echo $this->session->userdata('email'); ?></a></li2>
 	  <?php } ?>
 			
 	</ul>
 
-	<img src="<?php echo('http://localhost/CodeIgniter/imagenes/fondo.png'); ?>" />
+	<img src="<?php echo('http://localhost/CodeIgniter/imagenes/fondo.png'); ?>">

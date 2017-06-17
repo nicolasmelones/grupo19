@@ -1,0 +1,1 @@
+<div class="d4"><center><b><?php echo 'No hay gauchadas con esos parametros de busqueda.';?></b></center></div>
