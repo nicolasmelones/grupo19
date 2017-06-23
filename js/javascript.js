@@ -553,3 +553,79 @@ function valida_enviar19(){
 	if(confirm("¿Está seguro que desea cargar esta Característica?")){}
 	else {return false}
 }
+
+function valida_enviar77(){ 
+   	//validacion del nombre 
+   	if (document.editar.nombre.value.length==0){ 
+      	alert("Tiene que escribir su nombre") 
+      	document.editar.nombre.focus() 
+      	return false; 
+   	}
+	else if ( !(/^[a-zA-Z_áéíóúñÁÉÍÓÚÑ'\s]*$/.test(document.editar.nombre.value)) ){
+		alert("Tiene que escribir su nombre en letras") 
+      	document.editar.nombre.focus() 
+      	return false;
+	}
+	
+	//validacion del apellido
+   	if (document.editar.apellido.value.length==0){ 
+      	alert("Tiene que escribir su apellido") 
+      	document.editar.apellido.focus() 
+      	return false; 
+   	} 
+
+
+	//validacion de la clave
+	if (document.editar.clave.value.length==0){ 
+      	alert("Tiene que escribir su Clave") 
+      	document.editar.clave.focus() 
+      	return false; 
+   	}
+	
+	if (document.editar.telefono.value.length==0){ 
+      	alert("Tiene que escribir su Teléfono") 
+      	document.editar.telefono.focus() 
+      	return false; 
+   	}
+	else if ( !(/^[0-9]+$/.test(document.editar.telefono.value)) ){
+		alert("Tiene que escribir un Teléfono en números") 
+      	document.editar.telefono.focus() 
+      	return false;}
+	
+	if (document.editar.edad.value.length==0){ 
+      	alert("Tiene que escribir su Edad") 
+      	document.editar.edad.focus() 
+      	return false; 
+   	}
+	else if ( !(/^[0-9]+$/.test(document.editar.edad.value)) ){
+		alert("Tiene que escribir se Edad en números") 
+      	document.editar.edad.focus() 
+      	return false;}
+	
+	if (document.editar.localidades.value==0){ 
+      	alert("Tiene que seleccionar una Localidad") 
+      	document.editar.localidades.focus() 
+      	return false; 
+   	}
+	
+	function valida_enviar70(){ 
+		//validacion de la marca 
+   	if (document.gauchada.titulo.value.length==0){ 
+      	alert("Debe escribir un Título") 
+      	document.gauchada.titulo.focus() 
+      	return false; 
+   	}
+	
+	if (document.gauchada.descripcion.value.length==0){ 
+      	alert("Debe escribir una Descripción") 
+      	document.gauchada.descripcion.focus() 
+      	return false; 
+   	}
+	
+	
+
+		
+	}
+}
+
+
