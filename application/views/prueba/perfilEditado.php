@@ -1,0 +1,1 @@
+<div class="d3"><center><b><u><h3><?php echo '¡Perfil editado correctamente!';?></h3></u></b></center></div>

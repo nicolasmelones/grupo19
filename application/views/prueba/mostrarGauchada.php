@@ -24,7 +24,8 @@
 	?></p><br>
 	<p>Fecha limite (aaaa/mm/dd): <?php
 		echo $row->fecha;
-	?></p><br>	
+	?></p>
+	Localidad:<?php echo $row->localidad; ?>
 	
 	<?php 
 					$this->db->select('email');
@@ -42,8 +43,13 @@
 	<input type="submit" value="Ofrecerse" style= "font-weight: bold; width:120px; height:40px" ></input>
 	</center></div>
 	<?php
+	}else{
+		?><a href="editarGauchada?id=<?php echo $row->id; ?>">Editar Gauchada</a><?php
+		?><br><br><a href="eliminarGauchada?id=<?php echo $row->id; ?>">Eliminar Gauchada</a><?php
 	}
+	
 	}
+	
 	}
 	else{ ?>
 	<div class="d4"><center><h2>Gauchada expirada.</center></h2></div>
@@ -69,11 +75,11 @@
 		<p>Fecha limite (aaaa/mm/dd): <?php
 		echo $row->fecha;
 		?></p><br>	
-		
+		Localidad:<?php echo $row->localidad; ?>
 		</center></div>
 		
 	<?php }
-	
+
 	endforeach;
 	?>
 </td>	

@@ -15,7 +15,7 @@
 	<td><img src="<?php echo 'data:' . $row->tipoImagen . ';base64,' . base64_encode($row->imagen); ?>" width="400"></td>
 		<?php } ?>
 	<br>
-	<br>FECHA DE PUBLLICACIÓN Y LOCALIDAD
+	<br>
 	<td><?php $texto = $row->texto;
 		echo $aMostrar=substr($texto, 0, 150);
 		if((strlen($texto))>150){

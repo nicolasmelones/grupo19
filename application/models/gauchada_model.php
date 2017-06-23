@@ -49,5 +49,52 @@ class Gauchada_model extends CI_Model {
 		$this->db->where('email', $mail);
         $this->db->update('usuario', $data7);		
 	}
+	function modificar_gauchada($data, $data2, $contenido){
+
+		$id=$data['id'];
+		
+		$data54 = array(
+		'titulo' => $data['titulo'],
+		'texto' => $data['texto'],
+		'fecha' => $data['fecha'],
+		'imagen'=>$data2, 
+		'tipoImagen'=> $contenido[1],
+		'id' => $data['id'],
+		 );
+		$this->db->where('id', $id);
+		$this->db->update('gauchada', $data54);
+	}
+	function modificar_gauchada2($data){
+		$id=$data['id'];
+		$this->db->where('id', $id);
+		$this->db->update('gauchada', $data);
+	}
+	function eliminar_gauchada($idG){
+		$mail=$this->session->userdata('email');
+		$this->db->select('idUsuario');
+		$this->db->from('usuario');
+		$this->db->where('email', $mail);
+		$consulta = $this->db->get();
+		$resultado = $consulta->row();
+		$idU= $resultado->idUsuario;
+		
+		$this->db->select('idUsuario');
+		$this->db->from('gauchada');
+		$this->db->where('id', $idG);
+		$consulta = $this->db->get();
+		$resultado = $consulta->row();
+		$idUG= $resultado->idUsuario;
+		
+		if($idUG==$idU){
+			$this->db->where('id', $idG);
+			$this->db->delete('gauchada');
+			redirect('prueba/index?gauchadaEliminada');
+		}
+		else{
+			redirect('prueba/index?gauchadaDeotro');
+			
+		}
+		
+	}
 }
 ?>

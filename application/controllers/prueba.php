@@ -21,6 +21,18 @@ class Prueba extends CI_Controller {
 	if(isset($_GET['cargadocorrecto'])){
 		$this->load->view('prueba/compraExitosa');
 	}
+	if(isset($_GET['gauchadaDeotro'])){
+		$this->load->view('prueba/gauchadaDeotro');
+	}	
+	if(isset($_GET['gauchadaEliminada'])){
+		$this->load->view('prueba/gauchadaEliminada');
+	}
+	if(isset($_GET['gauchadaEditada'])){
+		$this->load->view('prueba/gauchadaEditada');
+	}	
+	if(isset($_GET['editPcorrecto'])){
+		$this->load->view('prueba/perfilEditado');
+	}
 	if(isset($_GET['sinCred'])){
 		$this->load->view('prueba/sinCredito');
 	}
@@ -323,6 +335,142 @@ class Prueba extends CI_Controller {
 	
 		
 	}
-}
+	
+	function editarPerfil(){
+		if(!$this->session->userdata('email')){
+			redirect('prueba/index?noInicio');
+		}	
+		$this->load->view('prueba/header');
+		$this->load->model('usuario_model');
+		$mail=$this->session->userdata('email');
+		
+		$data07['query'] = $this->usuario_model->traerDatos($mail);
+		$this->load->view('/prueba/editarPerfil', $data07);
+		
 
+	}
+	function validarEditarP(){
+		if(!$this->session->userdata('email')){
+			redirect('prueba/index?noInicio');
+		}
+		$this->load->model('usuario_model');
+		$this->form_validation->set_rules('nombre','Nombre','required|trim');
+		$this->form_validation->set_rules('apellido','Apellido','required|trim');
+		$this->form_validation->set_rules('clave','Clave','required|trim');
+		$this->form_validation->set_rules('telefono','Teléfono','required|numeric|trim');
+		$this->form_validation->set_rules('edad','Edad','required|numeric|trim|greater_than[0]|less_than[131]');
+		
+		if($this->form_validation->run() ==	FALSE){
+			$this->load->view('prueba/header');
+			$mail=$this->session->userdata('email');
+			$data07['query'] = $this->usuario_model->traerDatos($mail);
+			$this->load->view('prueba/editarPerfil', $data07 );
+		}
+		else{
+			$this->load->model('usuario_model');
+			$mail=$this->session->userdata('email');
+			$data24 = array(
+			'nombre' => $this->input->post('nombre'),
+			'apellido' => $this->input->post('apellido'),
+			'email'=> $mail,
+			'clave' => $this->input->post('clave'),
+			'telefono' => $this->input->post('telefono'),
+			'edad' => $this->input->post('edad'),
+			'idLocalidad' => $this->input->post('localidades')
+		    );
+			$this->usuario_model->editarDatos($data24);
+			redirect('prueba/index?editPcorrecto');
+		
+		}
+	}
+	function editarGauchada(){
+		if(!$this->session->userdata('email')){
+			redirect('prueba/index?noInicio');
+		}	
+		$this->load->view('prueba/header');
+		$this->load->model('traer_gauchada');
+		if(isset($_GET['id'])){
+			$id=$_GET['id'];
+		}
+		$data89['query'] = $this->traer_gauchada->mostrarGauchada1($id);
+	
+		$this->load->view('/prueba/editarGauchada', $data89);
+		
+		
+	}
+	function validarEditarG(){
+		$this->load->model('traer_gauchada');
+		$this->load->model('gauchada_model');		
+		
+		if(!$this->session->userdata('email')){
+			redirect('prueba/index?noInicio');
+		}		
+		$this->form_validation->set_rules('titulo','Título','required|max_length[50]');
+		$this->form_validation->set_rules('descripcion','Descripción','required|max_length[3000]');
+
+		$mail = $this->session->userdata('email');
+		$data = array(
+		'titulo' => $this->input->post('titulo'),
+		'texto' => $this->input->post('descripcion'),
+		'fecha' => $this->input->post('fecha'),
+		'id' => $this->input->post('id')
+		  );
+		$id= $data['id']; 
+		$data98['query'] = $this->traer_gauchada->mostrarGauchada1($id);  
+		if($this->input->post('fecha')==''){
+			$fecha=$data98['query'][0]->fecha;
+			$data['fecha'] = $fecha;
+		}
+		if($_FILES['imagen']['size']!=0){ 
+			$imagen_temporal  = $_FILES['imagen']['tmp_name'];
+			//$contenido=file_get_contents($_FILES['imagen']['tmp_name']);
+			$tipo=$_FILES['imagen']['type'];
+			$tamaño=$_FILES['imagen']['size'];
+			$array_tipo=explode('/',$tipo);
+			$fp     = fopen($imagen_temporal, 'r+b');
+			$data2 = fread($fp, filesize($imagen_temporal));
+			fclose($fp);
+			
+			if($this->form_validation->run() ==	FALSE || ($data['fecha'] < date("Y-m-d")) || ($tamaño > 16777215) || ($array_tipo[1]!='jpeg' && $array_tipo[1]!='jpg' && $array_tipo[1]!='png') ){
+				$this->load->view('prueba/header');
+				if($data['fecha'] < date("Y-m-d") ){
+					$this->load->view('prueba/fecha_error');
+				}
+				if($array_tipo[1]!='jpeg' && $array_tipo[1]!='jpg' && $array_tipo[1]!='png'){
+					$this->load->view('prueba/imagen_error');
+				}
+				if($tamaño > 16777215){
+					$this->load->view('prueba/imagen_error2');
+				}
+				$this->load->view('/prueba/editarGauchada', $data98);
+			}
+			else{
+				$this->gauchada_model->modificar_gauchada($data,$data2,$array_tipo);
+				redirect('prueba/index?gauchadaEditada');
+				}	
+		}
+		else{
+			if($this->form_validation->run() ==	FALSE || ($data['fecha'] < date("Y-m-d"))){
+					$this->load->view('prueba/header');
+					if($data['fecha'] < date("Y-m-d") ){
+						$this->load->view('prueba/fecha_error');
+				}
+					$this->load->view('/prueba/editarGauchada', $data98);
+				}
+			else{
+				$this->gauchada_model->modificar_gauchada2($data);
+				redirect('prueba/index?gauchadaEditada');
+				}
+
+			
+		}
+		
+	}
+	function eliminarGauchada(){
+		//FALTA PREGUNTAR CRITERIOS DE ELIMINACION
+		$id=$_GET['id'];
+		$this->load->model('gauchada_model');
+		$this->gauchada_model->eliminar_gauchada($id);
+	}
+}
 ?>

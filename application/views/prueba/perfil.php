@@ -14,7 +14,9 @@ Nombre:
 		Edad: <?php echo $query->edad;?><br>
 		Telefono: <?php echo $query->telefono;?><br>
 		Localidad: <?php echo $query->localidad;?><br>	
-		Categoría: <?php echo $query->idCategoria;}?><br>
+		Categoría: <?php echo $query->idCategoria;
+		?><br><br><a href="editarPerfil?email=<?php echo $query->email?>">Editar Perfil</a><?php
+		}?><br>
 		
 </div>
 </center>

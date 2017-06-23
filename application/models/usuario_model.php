@@ -31,5 +31,12 @@ class Usuario_model extends CI_Model {
 		$resultado = $consulta->row();
 		return $resultado;
 	}
+	
+	function editarDatos($data5){
+		
+		$mail=$data5['email'];
+		$this->db->where('email', $mail);
+        $this->db->update('usuario', $data5);
+	}
 }
 ?>
