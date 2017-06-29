@@ -147,6 +147,18 @@ div.d4 {
 	filter: alpha (opacity=60);
 	border-color: white;
 	border-radius: 25px;
+	}
+
+div.d5 {
+    background-color: #53c653;
+    width: 80%	;
+    padding: 25px;
+    border: 25px;
+    margin: 25px 0px;
+	opacity: 0.90;
+	filter: alpha (opacity=60);
+	border-color: white;
+	border-radius: 25px;
 	}	
 
 
