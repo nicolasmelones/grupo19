@@ -1,0 +1,10 @@
+<body>
+<tbody>
+<tr>
+<td>
+<?php echo 'Compra exitosa!!!!!!'; ?>
+</td>	
+</tr>
+</tbody>
+</body>
+</html>

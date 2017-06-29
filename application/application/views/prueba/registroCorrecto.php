@@ -1,0 +1,1 @@
+<center><div class="d3"><b><?php echo '¡Registrado Correctamente!';?></b></div></center>

@@ -1,0 +1,1 @@
+<div class="d4"><center><b><?php echo 'No hay ofrecimientos para esta gauchada.';?></b></center></div>

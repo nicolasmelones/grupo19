@@ -1,0 +1,1 @@
+<center><div class="d4"><b><u><h3><?php echo '¡Error!: Tarjeta Invalida';?></h3></u></b></div></center>

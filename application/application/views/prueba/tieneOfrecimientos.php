@@ -1,0 +1,1 @@
+<div class="d4"><center><b><?php echo 'La gauchada tiene ofrecimientos, no se puede editar.';?></b></center></div>
