@@ -136,8 +136,11 @@ function valida_enviar3(){
       	return false; 
    	}
 	
-
-		
+	if (document.gauchada.seccion.value==0){ 
+      	alert("Tiene que seleccionar una Sección") 
+      	document.gauchada.seccion.focus() 
+      	return false; 
+   	}
 }
 
 function valida_enviar4(){
@@ -623,7 +626,10 @@ function valida_enviar77(){
    	}
 	
 	
-
+	function confirmar_eliminar(){
+		if(confirm("¿Está seguro que desea eliminar esta gauchada?")){}
+		else {return false}
+	}
 		
 	}
 }
