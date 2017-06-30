@@ -610,10 +610,10 @@ function valida_enviar77(){
       	document.editar.localidades.focus() 
       	return false; 
    	}
-	
+}
 	function valida_enviar70(){ 
 		//validacion de la marca 
-   	if (document.gauchada.titulo.value.length==0){ 
+	if (document.gauchada.titulo.value.length==0){ 
       	alert("Debe escribir un Título") 
       	document.gauchada.titulo.focus() 
       	return false; 
@@ -624,14 +624,23 @@ function valida_enviar77(){
       	document.gauchada.descripcion.focus() 
       	return false; 
    	}
-	
-	
-	function confirmar_eliminar(){
-		if(confirm("¿Está seguro que desea eliminar esta gauchada?")){}
-		else {return false}
 	}
-		
+	
+	function validar_comentario(){
+		if (document.comentario.comentario.value.length==0){ 
+      	alert("Debe escribir un comentario") 
+      	document.comentario.comentario.focus() 
+      	return false; 
+		}
 	}
-}
+	
+	function validar_respuesta(){
+		if (document.respuesta.respuesta.value.length==0){ 
+      	alert("Debe escribir una respuesta") 
+      	document.respuesta.respuesta.focus() 
+      	return false; 
+		}
+	}
+
 
 
