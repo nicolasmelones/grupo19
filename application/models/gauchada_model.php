@@ -17,7 +17,7 @@ class Gauchada_model extends CI_Model {
 		$idLocalidad = ($resultado->idLocalidad);
 		
 		$this->db->insert('gauchada',array('titulo'=>$data['titulo'],'texto'=>$data['descripcion'],
-		'fecha'=>$data['fecha'],'imagen'=>$contenido, 'tipoImagen'=> $array_tipo[1], 'idUsuario'=>$id,'idLocalidad'=>$idLocalidad));
+		'fecha'=>$data['fecha'],'idSeccion'=>$data['seccion'],'imagen'=>$contenido, 'tipoImagen'=> $array_tipo[1], 'idUsuario'=>$id,'idLocalidad'=>$idLocalidad));
 	}
 	
 	function pedir_gauchada2($data,$mail){
@@ -31,7 +31,7 @@ class Gauchada_model extends CI_Model {
 		$idLocalidad = ($resultado->idLocalidad);
 		
 		$this->db->insert('gauchada',array('titulo'=>$data['titulo'],'texto'=>$data['descripcion'],
-		'fecha'=>$data['fecha'], 'idUsuario'=>$id,'idLocalidad'=>$idLocalidad));
+		'fecha'=>$data['fecha'],'idSeccion'=>$data['seccion'], 'idUsuario'=>$id,'idLocalidad'=>$idLocalidad));
 	}
 	
 	function restar_credito($mail){
@@ -57,6 +57,7 @@ class Gauchada_model extends CI_Model {
 		'titulo' => $data['titulo'],
 		'texto' => $data['texto'],
 		'fecha' => $data['fecha'],
+		'idSeccion' => $data['idSeccion'],
 		'imagen'=>$data2, 
 		'tipoImagen'=> $contenido[1],
 		'id' => $data['id'],
@@ -85,9 +86,10 @@ class Gauchada_model extends CI_Model {
 		$resultado = $consulta->row();
 		$idUG= $resultado->idUsuario;
 		
+		$data1 = array('eliminado'=>'1');
 		if($idUG==$idU){
 			$this->db->where('id', $idG);
-			$this->db->delete('gauchada');
+			$this->db->update('gauchada',$data1);
 			redirect('prueba/index?gauchadaEliminada');
 		}
 		else{
@@ -96,5 +98,61 @@ class Gauchada_model extends CI_Model {
 		}
 		
 	}
+	
+	function eliminar_imagen($data){
+		$data2 = array(
+			'imagen' => NULL,
+			'tipoImagen' => ''
+		);
+		$this->db->where('id', $data['id']);
+		$this->db->update('gauchada',$data2);
+		
+	}
+	
+	function ofrecer($idG,$idU){
+		$data54 = array(
+		'idUsuario' => $idU,
+		'idGauchada' => $idG
+		);
+		
+		$this->db->insert('ofrecimientos',array('idUsuario'=>$data54['idUsuario'],'idGauchada'=>$data54['idGauchada'], 'aceptado'=>0));
+		
+	}
+	
+	function traerOfrecimientos($idG){
+		$this->db->select('*');
+		$this->db->from('ofrecimientos');
+		$this->db->where('idGauchada', $idG);
+		$consulta = $this->db->get();
+		return $consulta->result();
+	}
+	
+	function traerPendientes(){
+		$email = $this->session->userdata('email');
+		$this->db->select('idUsuario');
+		$this->db->from('usuario');
+		$this->db->where('email', $email);
+		$consulta = $this->db->get();
+		$id = $consulta->row()->idUsuario;
+		
+		$this->db->select('*');
+		$this->db->from('gauchada');
+		$this->db->where('idUsuario', $id);
+		$this->db->where('aceptado', '1');
+		$this->db->where('valorado', '0');
+		$consulta2 = $this->db->get();
+		
+		return $consulta2->result();
+	}
+	function valorado($id){
+		$data = array(
+		'valorado' => '1'
+		);
+		$this->db->where('id', $id);
+		$this->db->update('gauchada',$data);
+		
+		
+	}
+	
 }
 ?>

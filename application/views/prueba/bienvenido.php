@@ -1,7 +1,7 @@
 <body link="00000">
 
 <?php foreach($query as $row): ?>
-	<?php if($row->fecha > date("Y-m-d")){ ?>
+	<?php if($row->fecha > date("Y-m-d") && ($row->eliminado == 0) && ($row->aceptado==0)){ ?>
 <div class="d1"><tr> 
 	<center>
 	<td><h2><a href="mostrarGauchada?id=<?php echo $row->id ?>"><?php echo $row->titulo; ?>  </a></h2></td>

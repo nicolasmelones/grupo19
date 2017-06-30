@@ -1,0 +1,1 @@
+<div class="d3"><center><b><u><h3><?php echo 'Gauchada aceptada: se le ha enviado un mail con los datos del gaucho ofrecido';?></h3></u></b></center></div>

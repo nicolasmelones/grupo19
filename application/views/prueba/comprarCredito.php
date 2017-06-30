@@ -21,15 +21,15 @@
 
 <h1><u>Comprar Credito</u></h1>
 
-	<?= form_label('Numero de tarjeta: ','numero') ?>
+	<?= form_label('<b>Numero de tarjeta:</b> ','numero') ?>
 	<?= form_input($numero) ?>
 <br>
 <br>
-<?= form_label('Codigo de seguridad: ','codigo') ?>
+<?= form_label('<b>Codigo de seguridad:</b> ','codigo') ?>
 	<?= form_input($codigo) ?>
 <br>
 <br>	
-	<?= form_submit('','Enviar') ?>
+	<?= form_submit('','Enviar','class="btn"') ?>
 	<?= form_close() ?>
 </div>
 </center>

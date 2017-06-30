@@ -1,0 +1,1 @@
+<div class="d4"><center><b><?php echo 'No puede pedir una gauchada, tiene valoraciones pendientes';?></b></center></div>

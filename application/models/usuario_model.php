@@ -38,5 +38,37 @@ class Usuario_model extends CI_Model {
 		$this->db->where('email', $mail);
         $this->db->update('usuario', $data5);
 	}
+	
+	function sumarPunto($id){
+		$this->db->select('puntaje');
+		$this->db->from('usuario');
+		$this->db->where('idUsuario', $id);
+		$consulta = $this->db->get();
+		$resultado = $consulta->row();
+		$num= $resultado->puntaje;
+		$num=$num+1;
+		
+		$data7 = array(
+			'puntaje' => $num
+		);
+		$this->db->where('idUsuario', $id);
+        $this->db->update('usuario', $data7);
+	}
+	
+	function restarPunto($id){
+		$this->db->select('puntaje');
+		$this->db->from('usuario');
+		$this->db->where('idUsuario', $id);
+		$consulta = $this->db->get();
+		$resultado = $consulta->row();
+		$num= $resultado->puntaje;
+		$num=$num-2;
+		
+		$data7 = array(
+			'puntaje' => $num
+		);
+		$this->db->where('idUsuario', $id);
+        $this->db->update('usuario', $data7);
+	}
 }
 ?>
